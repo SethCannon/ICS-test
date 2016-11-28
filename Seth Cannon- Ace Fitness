@@ -1,0 +1,89 @@
+"""Ace Fitness Club"""
+import time
+
+class Fitness():
+  
+  numofMembers = 0
+  cost = 200
+  
+  def __init__(self, firstName, lastName, age, idNumber, membership, weight):
+    self.firstName = firstName
+    self.lastName = lastName
+    self.age = age
+    self.idNumber = idNumber
+    self.membership = membership
+    self.weight = weight
+    self.weightKilo = round(self.weight/2.2)
+    
+    Fitness.numofMembers += 1
+    
+  #Pounds to Kilograms
+  def convertWeight(self):
+    self.weight = self.weight / 2.2
+    return self.weight
+    
+  def profile(self):
+    return '{} : {} : {} : {}'.format(self.firstName, self.age, self.idNumber, self.membership)
+  
+  def membershipFee(self):
+    if self.membership == 'Basic':
+      return Fitness.cost/100 * 75
+    elif self.membership == 'Premium':
+      return Fitness.cost
+    elif self.membership == 'Owner':
+      return 'Free'
+    else:
+      return Fitness.cost/100 * 50
+    
+class weightRoom(Fitness):
+  pass
+    
+class Pool(Fitness):
+  pass
+    
+class Gym(Fitness):
+  pass
+
+memberOne = Fitness('Seth', 'Cannon', int(15), int(18239), 'Owner', int(115))
+memberTwo = Fitness('Test', 'User', int(21), int(201001), 'Basic', int(210))
+memberThree = Fitness('Jordan', 'Oak', int(32), int(348910), 'Premium', int(240))
+weightOne = weightRoom('Test', 'User', int(65), int(665324), 'Premium', int(156))
+poolOne = Pool('Test', 'User', int(42), int(782243), 'Basic', int(223))
+gymOne = Gym('Test', 'User', int(37), int(992347), 'Basic', int(267))
+
+def printStatements():
+  print ("Welcome to the Ace Fitness Club Directory!")
+  print()
+  time.sleep(2)
+  print (Fitness.profile(memberOne))
+  print ()
+  time.sleep(1)
+  print (Fitness.membershipFee(memberOne))
+  print ()
+  time.sleep(1)
+  print (Fitness.profile(memberTwo))
+  print ()
+  time.sleep(1)
+  print (Fitness.membershipFee(memberTwo))
+  print ()
+  time.sleep(1)
+  print (Fitness.profile(memberThree))
+  print ()
+  time.sleep(1)
+  print (Fitness.membershipFee(memberThree))
+  print ()
+  time.sleep(1)
+  print (weightRoom.membershipFee(weightOne))
+  print ()
+  time.sleep(1)
+  print (Pool.membershipFee(poolOne))
+  print ()
+  time.sleep(1)
+  print (Gym.membershipFee(gymOne))
+  print ()
+  time.sleep(1)
+  print (Fitness.numofMembers)
+  print ()
+  time.sleep(1)
+  
+printStatements()
